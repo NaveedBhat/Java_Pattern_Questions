@@ -18,3 +18,4 @@ public class Exercise_1_Question_1 {
         Average(a,b,c);
     }
 }
+
