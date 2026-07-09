@@ -4,15 +4,24 @@ public class BugTest {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        // Use try-with-resources to ensure Scanner is closed automatically
+        try (Scanner sc = new Scanner(System.in)) {
+            
+            System.out.print("Enter a number to divide 10 by: ");
+            if (sc.hasNextInt()) {
+                int divisor = sc.nextInt();
+                
+                if (divisor != 0) {
+                    int x = 10 / divisor;
+                    System.out.println("Result: " + x);
+                } else {
+                    System.out.println("Error: Cannot divide by zero.");
+                }
+            }
 
-        int x = 10 / 0;   // Division by zero
-
-        String password = "admin123"; // Hardcoded credential
-
-        System.out.println(password);
-        System.out.println(x);
-
-        // Scanner never closed
+            // Avoid hardcoding sensitive credentials in production code
+            String password = "user_input_or_config"; 
+            System.out.println("Configured password: " + password);
+        }
     }
 }
